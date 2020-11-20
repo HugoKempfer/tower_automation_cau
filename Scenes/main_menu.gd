@@ -1,0 +1,19 @@
+extends Control
+
+var scene_path_to_load: String
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$Menu/CenterRow/MenuOptions/ContinueButton.grab_focus()
+	for button in $Menu/CenterRow/MenuOptions.get_children():
+		button.connect("pressed", self, "on_button_pressed", [button.scene_to_load])
+
+# Go to specified scene
+func on_button_pressed(scene_to_load: String) -> void:
+	scene_path_to_load = scene_to_load
+	$FadeIn.show()
+	$FadeIn.fade_in()
+
+func _on_FadeIn_fade_finished() -> void:
+	if get_tree().change_scene(scene_path_to_load) != OK:
+		printerr("An unexpected error occured when trying to switch to the ", scene_path_to_load, " scene")
