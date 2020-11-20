@@ -22,7 +22,13 @@ _global_script_class_icons={
 
 config/name="tower_automation_cau"
 config/description="Collect resources and build"
+run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1366
+window/size/height=768
 
 [gdnative]
 
