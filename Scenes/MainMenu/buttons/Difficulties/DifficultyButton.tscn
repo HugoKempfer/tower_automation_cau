@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/fonts/EmotionEngine_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/MainMenu/buttons/Difficulties/difficulty_button.gd" type="Script" id=2]
+
+[node name="Button" type="Button"]
+margin_right = 59.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 59, 27 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 59.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 59, 27 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.509804 )
+text = "Button"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

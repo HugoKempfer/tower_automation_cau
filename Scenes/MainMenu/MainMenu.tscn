@@ -30,6 +30,9 @@ __meta__ = {
 [node name="CenterRow" type="VBoxContainer" parent="Menu"]
 margin_right = 537.0
 margin_bottom = 608.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Logo" type="TextureRect" parent="Menu/CenterRow"]
 margin_right = 537.0
@@ -44,6 +47,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
 alignment = 1
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="ContinueButton" parent="Menu/CenterRow/MenuOptions" instance=ExtResource( 5 )]
 margin_top = 66.0
