@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/MainMenu/buttons/OptionsButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/main_menu/characters.png" type="Texture" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://Scenes/MainMenu/buttons/ContinueButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/MainMenu/buttons/NewGameButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/MainMenu/fade_in/FadeIn.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/main_menu.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/MainMenu/main_menu.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/MainMenu/buttons/QuitGame.tscn" type="PackedScene" id=9]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -45,15 +46,20 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="ContinueButton" parent="Menu/CenterRow/MenuOptions" instance=ExtResource( 5 )]
-margin_bottom = 160.0
+margin_top = 66.0
+margin_bottom = 120.0
 
 [node name="NewGameButton" parent="Menu/CenterRow/MenuOptions" instance=ExtResource( 6 )]
-margin_top = 180.0
-margin_bottom = 234.0
+margin_top = 140.0
+margin_bottom = 194.0
 
 [node name="OptionsButton" parent="Menu/CenterRow/MenuOptions" instance=ExtResource( 1 )]
-margin_top = 254.0
-margin_bottom = 308.0
+margin_top = 214.0
+margin_bottom = 268.0
+
+[node name="QuitGame" parent="Menu/CenterRow/MenuOptions" instance=ExtResource( 9 )]
+margin_top = 288.0
+margin_bottom = 348.0
 
 [node name="VersionLabel" type="Label" parent="Menu/CenterRow"]
 margin_top = 551.0
