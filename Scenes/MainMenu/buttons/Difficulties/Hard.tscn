@@ -8,3 +8,4 @@ margin_right = 44.0
 [node name="Label" parent="." index="0"]
 margin_right = 44.0
 text = "Hard"
+[connection signal="pressed" from="." to="." method="_on_Hard_pressed"]

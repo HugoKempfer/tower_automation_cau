@@ -7,3 +7,4 @@
 [node name="Label" parent="." index="0"]
 margin_right = 43.0
 text = "Easy"
+[connection signal="pressed" from="." to="." method="_on_Easy_pressed"]
