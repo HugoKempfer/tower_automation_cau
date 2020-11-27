@@ -1,19 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/input_handler.gd" type="Script" id=1]
 [ext_resource path="res://components/camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/tileset.tres" type="MeshLibrary" id=3]
+[ext_resource path="res://Terrain.gd" type="Script" id=4]
 
-[node name="Node" type="Node"]
+[node name="GameLevel" type="Node"]
 
 [node name="World" type="Spatial" parent="."]
 
 [node name="camera_anchor" parent="World" instance=ExtResource( 2 )]
 
-[node name="CSGBox" type="CSGBox" parent="World"]
-width = 14.1418
-depth = 21.4808
-
 [node name="CSGMesh" type="CSGMesh" parent="World"]
+
+[node name="Terrain" type="Node" parent="World"]
+script = ExtResource( 4 )
+
+[node name="GridMap" type="GridMap" parent="World/Terrain"]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 65534, 1, 0, 65535, 1, -1073741824, 0, 65534, 0, 1, 65534, 0, 65534, 65534, 536870912, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 65534, 65535, 0, 65535, 65535, 536870912 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="Node" type="Node" parent="World/Terrain"]
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource( 1 )

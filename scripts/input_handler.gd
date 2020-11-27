@@ -2,6 +2,7 @@
 
 extends Node
 
+
 # input handling should be handled so that it firstly checks if input was meant for HUD.
 # if not, then relay input to game.
 var placing_building = 0
@@ -17,10 +18,14 @@ var selecting_start = Vector2(0,0)
 export var fast_move = 0
 export var rotating_camera = 0
 #onready var game = get_node("/root/game")
-onready var camera_anchor = get_node("/root/Node/World/camera_anchor")
+onready var camera_anchor = get_node("/root/GameLevel/World/camera_anchor")
 
 func _ready():
 	set_process_input(true)
+
+func _process(delta):
+		#print(get_viewport().get_mouse_position().snapped(Vector2(64, 64)))
+		pass
 
 func _input(event):
 	# UI functionality
