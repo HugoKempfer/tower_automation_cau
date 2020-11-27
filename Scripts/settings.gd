@@ -27,23 +27,35 @@ var settings = {
 		"sound": true
 	},
 	"game_settings": {
-		"difficulty": difficulties.HARD
+		"difficulty": difficulties.MEDIUM
 	}
 }
 
 func _ready() -> void:
-#	check_settings_file()
-	save_settings()
+	init_settings_file()
 	load_settings()
+
+func init_settings_file() -> void:
+	var error: int = config_file.load(SAVE_PATH)
+
+	if error != OK && error != ERR_FILE_NOT_FOUND:
+		printerr("Failed Loading Settings File. error code %s" % error)
+		return
+	for section in settings.keys():
+		for key in settings[section]:
+			if config_file.get_value(section, key, null) == null:
+				config_file.set_value(section, key, settings[section][key])
+	error = config_file.save(SAVE_PATH)
+	if error != OK:
+		printerr("Failed Saving in Settings File. error code %s" % error)
 
 func save_settings() -> void:
 	var error: int = OK
 
-	print("SAVING")
 	for section in settings.keys():
 		for key in settings[section]:
 			config_file.set_value(section, key, settings[section][key])
-	error = config_file.save(SAVE_PATH)
+	config_file.save(SAVE_PATH)
 	if error != OK:
 		printerr("Failed Saving in Settings File. error code %s" % error)
 
@@ -52,6 +64,7 @@ func load_settings() -> void:
 
 	if error != OK:
 		printerr("Failed Loading Settings File. error code %s" % error)
+		return
 	for section in settings.keys():
 		for key in settings[section].keys():
 			settings[section][key] = config_file.get_value(section, key, null)
@@ -61,5 +74,4 @@ func get_settings(category, key):
 	return settings[category][key]
 
 func set_settings(category, key, value) -> void:
-	print("SET SETTINGS")
 	settings[category][key] = value
