@@ -7,7 +7,7 @@ class TileData:
 	func _init(is_terrain_constructible: bool):
 		self.is_terrain_constructible = is_terrain_constructible
 
-export var constructible_tile_names = ["Tile"]
+export var constructible_tile_names = ["Tile"] # Add all non-obstacle tile names
 var constructible_tile_ids = []
 
 onready var tileset_node := $GridMap as GridMap
