@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/input_handler.gd" type="Script" id=1]
 [ext_resource path="res://components/camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/tileset.tres" type="MeshLibrary" id=3]
 [ext_resource path="res://Terrain.gd" type="Script" id=4]
+[ext_resource path="res://components/constructible/Core.tscn" type="PackedScene" id=5]
 
 [node name="GameLevel" type="Node"]
 
@@ -19,13 +20,17 @@ script = ExtResource( 4 )
 [node name="GridMap" type="GridMap" parent="World/Terrain"]
 mesh_library = ExtResource( 3 )
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 65534, 1, 0, 65535, 1, -1073741824, 0, 65534, 0, 1, 65534, 0, 65534, 65534, 536870912, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 65534, 65535, 0, 65535, 65535, 536870912 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 65534, 536870912, 1, 65534, 536870912, 65534, 65534, 0, 65535, 65534, 536870912, 0, 65535, 0, 1, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
 }
 __meta__ = {
-"_editor_clip_": 0
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
 }
 
-[node name="Node" type="Node" parent="World/Terrain"]
+[node name="Constructions" type="Node" parent="World/Terrain"]
+
+[node name="Core" parent="World/Terrain/Constructions" instance=ExtResource( 5 )]
+transform = Transform( 0.688679, -0.00359042, -0.00147198, 0.001924, 0.00166652, 0.52928, -0.00358576, -0.68868, 0.00128846, 0, 1.77961, 0 )
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource( 1 )
