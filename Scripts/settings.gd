@@ -55,7 +55,7 @@ func save_settings() -> void:
 	for section in settings.keys():
 		for key in settings[section]:
 			config_file.set_value(section, key, settings[section][key])
-	config_file.save(SAVE_PATH)
+	error = config_file.save(SAVE_PATH)
 	if error != OK:
 		printerr("Failed Saving in Settings File. error code %s" % error)
 
