@@ -132,8 +132,9 @@ func is_point_in_rectangle(point, rect_start, rect_end):
 func focus_on_home():
 	#already placed Cone of Construction is our home for now
 	#should have group named "home" that includes only one node and focus on that node
-	var home_location = get_node("/root/game/game_world/actors/constructions/cone_of_construction").get_translation()
-	get_node("../game_world/camera_anchor").set_translation(home_location)
+	#var home_location = get_node("/root/game/game_world/actors/constructions/cone_of_construction").get_translation()
+	#get_node("../game_world/camera_anchor").set_translation(home_location)
+	pass
 
 func deselect_all_selected_units():
 	for unit in get_tree().get_nodes_in_group("selected"):
