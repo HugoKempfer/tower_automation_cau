@@ -18,9 +18,10 @@
 script = ExtResource( 4 )
 
 [node name="GridMap" type="GridMap" parent="World/Terrain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.95841, 0 )
 mesh_library = ExtResource( 3 )
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 65534, 536870912, 1, 65534, 536870912, 65534, 65534, 0, 65535, 65534, 536870912, 0, 65535, 0, 1, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 65534, 536870912, 1, 65534, 0, 65534, 65534, 0, 65535, 65534, 536870912, 0, 65535, 0, 1, 65535, 0, 65534, 65535, 536870912, 65535, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -30,7 +31,7 @@ __meta__ = {
 [node name="Constructions" type="Node" parent="World/Terrain"]
 
 [node name="Core" parent="World/Terrain/Constructions" instance=ExtResource( 5 )]
-transform = Transform( 0.688679, -0.00359042, -0.00147198, 0.001924, 0.00166652, 0.52928, -0.00358576, -0.68868, 0.00128846, 0, 1.77961, 0 )
+transform = Transform( 0.688679, -0.00359042, -0.00147198, 0.001924, 0.00166652, 0.52928, -0.00358576, -0.68868, 0.00128846, 0, 0.77961, 0 )
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource( 1 )
