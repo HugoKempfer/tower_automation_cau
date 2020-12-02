@@ -34,7 +34,13 @@ _global_script_class_icons={
 
 config/name="tower_automation_cau"
 config/description="Collect resources and build"
+run/main_scene="res://game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+DataParser="*res://scripts/DataParser.gd"
+InventoryDataParser="*res://scripts/InventoryDataParser.gd"
 
 [gdnative]
 
