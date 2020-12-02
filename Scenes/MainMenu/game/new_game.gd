@@ -6,12 +6,12 @@ func _ready() -> void:
 # Go to game scene
 func _on_Play_pressed() -> void:
 	Settings.save_settings()
-	if get_tree().change_scene("res://Scenes/game.tscn") != OK:
+	if get_tree().change_scene("res://scenes/game.tscn") != OK:
 		printerr("An unexpected error occured when trying to switch to the game scene")
 
 # Go back to MainMenu scene
 func _on_Back_pressed() -> void:
-	if get_tree().change_scene("res://Scenes/MainMenu/MainMenu.tscn") != OK:
+	if get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn") != OK:
 		printerr("An unexpected error occured when trying to switch to the MainMenu scene")
 
 func _on_YourNameLineEdit_text_changed(new_text: String) -> void:
