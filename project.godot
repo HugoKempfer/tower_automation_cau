@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "BuildableTile",
 "language": "GDScript",
-"path": "res://Scripts/terrain/buildable_tile.gd"
+"path": "res://scripts/terrain/buildable_tile.gd"
 }, {
 "base": "Node",
 "class": "Building",
 "language": "GDScript",
-"path": "res://Scripts/terrain/building.gd"
+"path": "res://scripts/terrain/building.gd"
 }, {
 "base": "",
 "class": "GitAPI",
@@ -34,7 +34,7 @@ _global_script_class_icons={
 
 config/name="tower_automation_cau"
 config/description="Collect resources and build"
-run/main_scene="res://game.tscn"
+run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -45,6 +45,29 @@ InventoryDataParser="*res://scripts/InventoryDataParser.gd"
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]
+
+[input]
+
+camera_fast_move={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+camera_rotate={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+focus_home={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+click_on_environment={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [rendering]
 
