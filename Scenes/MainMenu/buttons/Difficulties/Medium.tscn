@@ -9,3 +9,4 @@ rect_min_size = Vector2( 71, 27 )
 [node name="Label" parent="." index="0"]
 margin_right = 71.0
 text = "Medium"
+[connection signal="pressed" from="." to="." method="_on_Medium_pressed"]

@@ -22,6 +22,7 @@ func array_has_property(props: Array, property: String) -> bool:
 # Go to specified scene
 func on_button_pressed(scene_to_load: String) -> void:
 	scene_path_to_load = scene_to_load
+	$Click.play()
 	$FadeIn.show()
 	$FadeIn.fade_in()
 
@@ -29,3 +30,4 @@ func on_button_pressed(scene_to_load: String) -> void:
 func _on_FadeIn_fade_finished() -> void:
 	if get_tree().change_scene(scene_path_to_load) != OK:
 		printerr("An unexpected error occured when trying to switch to the ", scene_path_to_load, " scene")
+
