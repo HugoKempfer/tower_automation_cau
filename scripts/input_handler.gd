@@ -23,7 +23,7 @@ onready var camera_anchor = get_node("/root/GameLevel/World/camera_anchor")
 func _ready():
 	set_process_input(true)
 
-func _process(delta):
+func _process(_delta):
 		#print(get_viewport().get_mouse_position().snapped(Vector2(64, 64)))
 		pass
 

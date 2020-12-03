@@ -34,7 +34,7 @@ _global_script_class_icons={
 
 config/name="tower_automation_cau"
 config/description="Collect resources and build"
-run/main_scene="res://game.tscn"
+run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

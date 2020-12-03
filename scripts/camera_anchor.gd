@@ -18,7 +18,7 @@ func _ready():
 		zone.connect("mouse_entered", self, "_mouse_enter_"+zone.get_name())
 		zone.connect("mouse_exited", self, "_mouse_exit_"+zone.get_name())
 
-func _process(delta):
+func _process(_delta):
 	move_camera()
 
 func start_moving_camera():
