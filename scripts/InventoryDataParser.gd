@@ -4,7 +4,7 @@ var url = "res://Database//inventory.json"
 
 func _ready():
 	pass
-	
+
 func get_item_by_name(name):
 	var data = {}
 	

@@ -41,6 +41,12 @@ config/icon="res://icon.png"
 
 DataParser="*res://scripts/DataParser.gd"
 InventoryDataParser="*res://scripts/InventoryDataParser.gd"
+Settings="*res://scripts/settings.gd"
+
+[display]
+
+window/size/width=1366
+window/size/height=768
 
 [gdnative]
 

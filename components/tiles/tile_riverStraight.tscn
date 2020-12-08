@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Models/OBJ format/tile_riverStraight.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://components/tiles/obstacle.tscn" type="PackedScene" id=2]
+
+[node name="tile_riverStraight" instance=ExtResource( 2 )]
+mesh = ExtResource( 1 )
+material/1 = null
+material/2 = null

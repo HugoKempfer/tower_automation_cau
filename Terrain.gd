@@ -13,6 +13,23 @@ var being_positioned_building: Spatial = null
 onready var tileset_node := $GridMap as GridMap
 var tiles: = {}
 
+enum BuildingTypes {
+	TURRET_DOUBLE = 0,
+	TURRET_SINGLE,
+	WEAPON_BLASTER
+}
+
+var building_selected = {
+	"selected": false,
+	"type": BuildingTypes.TURRET_DOUBLE
+ }
+
+const building_types = {
+	BuildingTypes.TURRET_DOUBLE: preload("res://components/constructible/turret_double.tscn"),
+	BuildingTypes.TURRET_SINGLE: preload("res://components/constructible/turret_single.tscn"),
+	BuildingTypes.WEAPON_BLASTER: preload("res://components/constructible/weapon_blaster.tscn")
+}
+
 func _ready() -> void:
 	for tile in constructible_tile_names:
 		constructible_tile_ids.append(self.tileset_node.mesh_library.find_item_by_name(tile))
@@ -62,7 +79,7 @@ func enable_building_positioning(building: Spatial):
 # To delete
 func spawn_core():
 	var core := preload("res://components/constructible/Core.tscn")
-	print("Spwaning core")
+	print("Spwaning core YEAH")
 	var new_core = core.instance()
 	$Constructions.add_child(new_core)
 	self.enable_building_positioning(new_core)
@@ -83,3 +100,15 @@ func _input(event):
 		self.try_positioning_building()
 	if event.is_action("focus_home") && self.being_positioned_building == null:
 		self.spawn_core()
+
+func spawn_buildings(building_type: int) -> void:
+	print("Spwaning Building with type %s" % building_type)
+	var new_building = building_types[building_type].instance()
+	$Constructions.add_child(new_building)
+	self.enable_building_positioning(new_building)
+
+func _on_PlayerInterface_selected_building(building_type):
+	if being_positioned_building == null:
+		spawn_buildings(building_type)
+		building_selected["selected"] = true
+		building_selected["type"] = building_type

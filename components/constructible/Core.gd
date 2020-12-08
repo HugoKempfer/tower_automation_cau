@@ -1,4 +1,4 @@
 extends Building
 
 func _init() -> void:
-	self.size = 1
+	self.size = 3
