@@ -1,9 +1,9 @@
 extends Control
 
 const resolutions = [
-	Vector2(1366, 768),                 
+	Vector2(1366, 768),
 	Vector2(1600, 900),
-	Vector2(1920, 1080), 
+	Vector2(1920, 1080),
 	Vector2(2560, 1440),
 	Vector2(3200, 1800),
 	Vector2(3840, 2160),
@@ -27,7 +27,7 @@ func _on_Save_pressed() -> void:
 
 func _on_OptionButton_ready() -> void:
 	var saved_resolution: Vector2
-	
+
 	saved_resolution.x = Settings.get_settings("display", "width")
 	saved_resolution.y = Settings.get_settings("display", "height")
 	for idx in resolutions.size():
@@ -39,11 +39,11 @@ func _on_OptionButton_ready() -> void:
 func _on_OptionButton_item_selected(index) -> void:
 	Settings.set_settings("display", "width", resolutions[index].x)
 	Settings.set_settings("display", "height", resolutions[index].y)
-	
+
 # Change window size with save resolution
 func apply_resolution() -> void:
 	var saved_resolution: Vector2
-	
+
 	saved_resolution.x = Settings.get_settings("display", "width")
 	saved_resolution.y = Settings.get_settings("display", "height")
 	if saved_resolution.x != 0 && saved_resolution.y:

@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/input_handler.gd" type="Script" id=1]
 [ext_resource path="res://components/camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/tileset.tres" type="MeshLibrary" id=3]
 [ext_resource path="res://Terrain.gd" type="Script" id=4]
+[ext_resource path="res://components/constructible/Core.tscn" type="PackedScene" id=5]
+[ext_resource path="res://components/units/basic_enemy_spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/WaveSpawnerTimer.gd" type="Script" id=7]
 
 [node name="GameLevel" type="Node"]
 
@@ -20,7 +23,7 @@ script = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.95841, 0 )
 mesh_library = ExtResource( 3 )
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 65534, 1, 0, 65535, 1, 1073741824, 0, 65534, 0, 1, 65534, 1073741824, 65534, 65534, 0, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 65534, 65535, 1073741824, 65535, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 65534, 0, 1, 65534, -536870912, 65534, 65534, 0, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -29,5 +32,31 @@ __meta__ = {
 
 [node name="Constructions" type="Node" parent="World/Terrain"]
 
+[node name="MeshInstance" parent="World/Terrain/Constructions" instance=ExtResource( 5 )]
+transform = Transform( 0.688679, -0.00359042, -0.00147198, 0.00358576, 0.68868, -0.00128848, 0.001924, 0.00166655, 0.52928, 1.93579, 1, 2.33475 )
+
+[node name="WaveSpawner" type="Timer" parent="World/Terrain"]
+script = ExtResource( 7 )
+
+[node name="CounterLabel" type="Label" parent="World/Terrain/WaveSpawner"]
+anchor_right = 0.003
+anchor_bottom = 0.007
+margin_left = 33.0
+margin_top = 29.0
+margin_right = 105.928
+margin_bottom = 46.8
+rect_scale = Vector2( 1.08495, 1 )
+text = "Next wave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="basic_spawner" parent="World/Terrain" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55824, 0, -2.70037 )
+
+[node name="basic_spawner2" parent="World/Terrain" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40007, 0, -2.70037 )
+
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource( 1 )
+[connection signal="timeout" from="World/Terrain/WaveSpawner" to="World/Terrain/WaveSpawner" method="_on_WaveSpawner_timeout"]
