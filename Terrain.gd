@@ -3,7 +3,6 @@ extends Node
 class TileData:
 	var is_terrain_constructible: bool
 	var construction_state := ""
-
 	func _init(is_terrain_constructible: bool):
 		self.is_terrain_constructible = is_terrain_constructible
 
@@ -12,6 +11,7 @@ var constructible_tile_ids = []
 var being_positioned_building: Spatial = null
 onready var tileset_node := $GridMap as GridMap
 var tiles: = {}
+var to_spawn = []
 
 enum BuildingTypes {
 	TURRET_DOUBLE = 0,
@@ -52,7 +52,7 @@ func enable_building_mode() -> void:
 			current.connect("buildable_tile_hovered", self, "handle_tile_hover")
 
 func disable_building_mode() -> void:
-	for tile in get_tree().get_nodes_in_group("buildable_tile_hovered"):
+	for tile in get_tree().get_nodes_in_group("available_tiles"):
 		tile.queue_free()
 
 func can_be_positioned_on_tile(size: int, origin: Vector3) -> bool:
@@ -66,10 +66,7 @@ func can_be_positioned_on_tile(size: int, origin: Vector3) -> bool:
 	return true
 
 func handle_tile_hover(pos: Vector3) -> void:
-	print(pos)
-	print(self.tiles)
 	if self.being_positioned_building and can_be_positioned_on_tile(self.being_positioned_building.size, pos):
-		print("YESSSS")
 		self.being_positioned_building.transform.origin = pos
 
 func enable_building_positioning(building: Spatial):
@@ -79,7 +76,6 @@ func enable_building_positioning(building: Spatial):
 # To delete
 func spawn_core():
 	var core := preload("res://components/constructible/Core.tscn")
-	print("Spwaning core YEAH")
 	var new_core = core.instance()
 	$Constructions.add_child(new_core)
 	self.enable_building_positioning(new_core)
@@ -92,18 +88,14 @@ func try_positioning_building():
 		self.being_positioned_building = null
 		# TODO => update used tile datas
 
-func _input(event):
-	if event.is_action("click_on_environment"):
-		print("CLICK")
-
+func _unhandled_input(event):
 	if event.is_action("click_on_environment") and self.being_positioned_building:
 		self.try_positioning_building()
 	if event.is_action("focus_home") && self.being_positioned_building == null:
 		self.spawn_core()
 
 func spawn_buildings(building_type: int) -> void:
-	print("Spwaning Building with type %s" % building_type)
-	var new_building = building_types[building_type].instance()
+	var new_building: Spatial = building_types[building_type].instance()
 	$Constructions.add_child(new_building)
 	self.enable_building_positioning(new_building)
 

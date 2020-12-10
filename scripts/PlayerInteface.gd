@@ -22,10 +22,10 @@ func init_inventory() -> void:
 	resource_list.max_columns = 3
 	resource_list.fixed_icon_size = Vector2(48, 48)
 	resource_list.icon_mode = resource_list.ICON_MODE_TOP
-	resource_list.same_column_width = true	
+	resource_list.same_column_width = true
 	for i in range (0, resources.size()):
 		resource_list.add_item(resources[i]["name"] + " : " + String(resources[i]["quantity"]), ResourceLoader.load(resources[i]["icon"]), true)
-	
+
 func update_inventory() -> void:
 	var resources = [InventoryDataParser.get_item_by_name("copper"),
 					InventoryDataParser.get_item_by_name("coal"),
@@ -33,11 +33,11 @@ func update_inventory() -> void:
 					InventoryDataParser.get_item_by_name("lead"),
 					InventoryDataParser.get_item_by_name("oil"),
 					InventoryDataParser.get_item_by_name("uranium")]
-	
+
 	resource_list.clear()
 	for i in range (0, resources.size()):
 		resource_list.add_item(resources[i]["name"] + " : " + String(resources[i]["quantity"]), ResourceLoader.load(resources[i]["icon"]), true)
-	
+
 func edit_player_resource(name, quantity, isAdding) -> void:
 	InventoryDataParser.edit_item_quantity(name, quantity, isAdding)
 	update_inventory()
