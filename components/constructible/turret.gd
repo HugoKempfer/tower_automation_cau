@@ -24,9 +24,9 @@ func _process(delta) -> void:
 
 func aim() -> void:
 	if can_shoot and ray.is_colliding():
-		if ray.get_collider().is_in_group("core"): # Issue, trouble to detect object from group "core"
-			shoot()
-			reload()
+		#if ray.get_collider().is_in_group("core"): # Issue, trouble to detect object from group "core"
+		shoot()
+		reload()
 
 func shoot() -> void:
 	var origin = canon.global_transform.origin

@@ -44,7 +44,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="tower_automation_cau"
+config/name="Enceladus 2121"
 config/description="Collect resources and build"
 run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
