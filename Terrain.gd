@@ -16,13 +16,15 @@ var to_spawn = []
 enum BuildingTypes {
 	TURRET_DOUBLE = 0,
 	TURRET_SINGLE,
-	WEAPON_BLASTER
+	WEAPON_BLASTER,
+	RESSOURCE_GETTER
 }
 
 const building_types = {
 	BuildingTypes.TURRET_DOUBLE: preload("res://components/constructible/turret_double.tscn"),
 	BuildingTypes.TURRET_SINGLE: preload("res://components/constructible/turret_single.tscn"),
-	BuildingTypes.WEAPON_BLASTER: preload("res://components/constructible/weapon_blaster.tscn")
+	BuildingTypes.WEAPON_BLASTER: preload("res://components/constructible/weapon_blaster.tscn"),
+	BuildingTypes.RESSOURCE_GETTER: preload("res://components/constructible/ressource_getter.tscn")
 }
 
 func _ready() -> void:
