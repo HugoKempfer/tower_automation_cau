@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/EmotionEngine_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/MainMenu/buttons/quit_game.gd" type="Script" id=2]
+
+[node name="QuitGame" type="Button"]
+margin_top = 312.0
+margin_right = 537.0
+margin_bottom = 372.0
+rect_min_size = Vector2( 360, 54 )
+custom_fonts/font = ExtResource( 1 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.509804 )
+custom_constants/shadow_offset_y = 2
+text = "Quit Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="." to="." method="_on_QuitGame_button_up"]

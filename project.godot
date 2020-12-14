@@ -9,24 +9,84 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://git_api.gdns"
+"base": "Spatial",
+"class": "BasicEnemySpawner",
+"language": "GDScript",
+"path": "res://scripts/units/basic_enemy_spawner.gd"
+}, {
+"base": "Spatial",
+"class": "BuildableTile",
+"language": "GDScript",
+"path": "res://scripts/terrain/buildable_tile.gd"
+}, {
+"base": "Node",
+"class": "Building",
+"language": "GDScript",
+"path": "res://scripts/terrain/building.gd"
+}, {
+"base": "Building",
+"class": "Turret",
+"language": "GDScript",
+"path": "res://components/constructible/turret.gd"
+}, {
+"base": "Timer",
+"class": "WaveSpawner",
+"language": "GDScript",
+"path": "res://scenes/WaveSpawnerTimer.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"BasicEnemySpawner": "",
+"BuildableTile": "",
+"Building": "",
+"Turret": "",
+"WaveSpawner": ""
 }
 
 [application]
 
-config/name="tower_automation_cau"
+config/name="Enceladus 2121"
 config/description="Collect resources and build"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/Main.tscn"
+config/icon="res://assets/enceladus.png"
+
+[autoload]
+
+Settings="*res://scripts/settings.gd"
+InventoryDataParser="*res://scripts/InventoryDataParser.gd"
+DataParser="*res://scripts/DataParser.gd"
+
+[display]
+
+window/size/width=1366
+window/size/height=768
+window/size/resizable=false
 
 [gdnative]
 
-singletons=[ "res://git_api.gdnlib" ]
+singletons=[  ]
+
+[input]
+
+camera_fast_move={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+camera_rotate={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+focus_home={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+click_on_environment={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [rendering]
 
