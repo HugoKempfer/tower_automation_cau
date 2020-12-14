@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://components/tiles/obstacle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Models/OBJ format/snow_tile_riverTransition.obj" type="ArrayMesh" id=2]
+
+[node name="snow_tile_riverTransition" instance=ExtResource( 1 )]
+mesh = ExtResource( 2 )
+material/1 = null
+material/2 = null

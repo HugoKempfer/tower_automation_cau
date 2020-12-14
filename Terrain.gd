@@ -3,15 +3,29 @@ extends Node
 class TileData:
 	var is_terrain_constructible: bool
 	var construction_state := ""
-
-	func _init(is_constructible: bool):
-		self.is_terrain_constructible = is_constructible
+	func _init(_is_terrain_constructible: bool):
+		self.is_terrain_constructible = _is_terrain_constructible
 
 export var constructible_tile_names = ["Tile"] # Add all non-obstacle tile names
 var constructible_tile_ids = []
 var being_positioned_building: Spatial = null
 onready var tileset_node := $GridMap as GridMap
 var tiles: = {}
+var to_spawn = []
+
+enum BuildingTypes {
+	TURRET_DOUBLE = 0,
+	TURRET_SINGLE,
+	WEAPON_BLASTER,
+	RESSOURCE_GETTER
+}
+
+const building_types = {
+	BuildingTypes.TURRET_DOUBLE: preload("res://components/constructible/turret_double.tscn"),
+	BuildingTypes.TURRET_SINGLE: preload("res://components/constructible/turret_single.tscn"),
+	BuildingTypes.WEAPON_BLASTER: preload("res://components/constructible/weapon_blaster.tscn"),
+	BuildingTypes.RESSOURCE_GETTER: preload("res://components/constructible/ressource_getter.tscn")
+}
 
 func _ready() -> void:
 	for tile in constructible_tile_names:
@@ -21,7 +35,6 @@ func _ready() -> void:
 	for cell in cells:
 		var current_cell_tile_id: int = self.tileset_node.get_cell_item(cell.x, cell.y, cell.z)
 		tiles[cell as Vector3] = TileData.new(self.constructible_tile_ids.has(current_cell_tile_id))
-
 
 func enable_building_mode() -> void:
 	var buildable = preload("res://components/constructible/buildable_tile.tscn")
@@ -36,7 +49,7 @@ func enable_building_mode() -> void:
 			current.connect("buildable_tile_hovered", self, "handle_tile_hover")
 
 func disable_building_mode() -> void:
-	for tile in get_tree().get_nodes_in_group("buildable_tile_hovered"):
+	for tile in get_tree().get_nodes_in_group("available_tiles"):
 		tile.queue_free()
 
 func can_be_positioned_on_tile(size: int, origin: Vector3) -> bool:
@@ -50,8 +63,6 @@ func can_be_positioned_on_tile(size: int, origin: Vector3) -> bool:
 	return true
 
 func handle_tile_hover(pos: Vector3) -> void:
-	print(pos)
-	print(self.tiles)
 	if self.being_positioned_building and can_be_positioned_on_tile(self.being_positioned_building.size, pos):
 		self.being_positioned_building.transform.origin = pos
 
@@ -74,9 +85,17 @@ func try_positioning_building():
 		self.being_positioned_building = null
 		# TODO => update used tile datas
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action("click_on_environment") and self.being_positioned_building:
 		self.try_positioning_building()
 	if event.is_action("focus_home") && self.being_positioned_building == null:
 		self.spawn_core()
 
+func spawn_buildings(building_type: int) -> void:
+	var new_building: Spatial = building_types[building_type].instance()
+	$Constructions.add_child(new_building)
+	self.enable_building_positioning(new_building)
+
+func _on_PlayerInterface_selected_building(building_type):
+	if being_positioned_building == null:
+		spawn_buildings(building_type)

@@ -2,6 +2,7 @@
 
 extends Node
 
+<<<<<<< HEAD
 
 # input handling should be handled so that it firstly checks if input was meant for HUD.
 # if not, then relay input to game.
@@ -13,6 +14,8 @@ var building_node
 # temporary variable for building placement
 var building_location
 var can_build = 0
+=======
+>>>>>>> dev
 var fast_move_start = Vector2()
 var selecting_start = Vector2(0,0)
 export var fast_move = 0
@@ -29,9 +32,12 @@ func _process(_delta):
 
 func _input(event):
 	# UI functionality
+<<<<<<< HEAD
 	if event.is_action("focus_home"):
 		focus_on_home()
 
+=======
+>>>>>>> dev
 	if event.is_action_pressed("camera_rotate"):
 		rotating_camera = 1
 		camera_anchor.start_moving_camera()
@@ -55,6 +61,7 @@ func _input(event):
 	if fast_move and event is InputEventMouseMotion:
 		camera_anchor.change_direction(event.relative.x, event.relative.y)
 
+<<<<<<< HEAD
 	# construction placement
 	if placing_building and event.is_action_pressed("confirm_placement"):
 		if !building_location and can_build:
@@ -115,6 +122,8 @@ func _input(event):
 			selecting_start = Vector2(0,0)
 			get_node("/root/game/UI/HUD").hide_rectangle()
 
+=======
+>>>>>>> dev
 func mouse2coords(event):
 	var near = camera_anchor.get_node("camera").project_ray_origin(event.position)
 	var far = near + camera_anchor.get_node("camera").project_ray_normal(event.position)*100
@@ -128,6 +137,7 @@ func is_point_in_rectangle(point, rect_start, rect_end):
 		if ( ( rect_start.y > y and y > rect_end.y) or (rect_start.y < y and y < rect_end.y )):
 			return true
 	return false
+<<<<<<< HEAD
 
 func focus_on_home():
 	#already placed Cone of Construction is our home for now
@@ -142,3 +152,5 @@ func deselect_all_selected_units():
 
 func cancel_building_placement():
 	building_node.free()
+=======
+>>>>>>> dev
