@@ -68,7 +68,6 @@ func load_settings() -> void:
 	for section in settings.keys():
 		for key in settings[section].keys():
 			settings[section][key] = config_file.get_value(section, key, null)
-			print("%s: %s, %s" % [key, section, settings[section][key]])
 
 func get_settings(category, key):
 	return settings[category][key]

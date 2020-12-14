@@ -57,5 +57,4 @@ func initialize_buildings() -> void:
 		building_list.add_item(building_name, resource, true)
 
 func _on_BuildingList_item_selected(index):
-	print(index)
 	emit_signal("selected_building", index)

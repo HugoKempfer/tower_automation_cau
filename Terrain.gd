@@ -3,8 +3,8 @@ extends Node
 class TileData:
 	var is_terrain_constructible: bool
 	var construction_state := ""
-	func _init(is_terrain_constructible: bool):
-		self.is_terrain_constructible = is_terrain_constructible
+	func _init(_is_terrain_constructible: bool):
+		self.is_terrain_constructible = _is_terrain_constructible
 
 export var constructible_tile_names = ["Tile"] # Add all non-obstacle tile names
 var constructible_tile_ids = []
@@ -74,7 +74,6 @@ func enable_building_positioning(building: Spatial):
 func spawn_core():
 	var core := preload("res://components/constructible/Core.tscn")
 	var new_core = core.instance()
-	print(new_core)
 	$Constructions.add_child(new_core)
 	self.enable_building_positioning(new_core)
 

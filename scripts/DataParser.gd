@@ -18,7 +18,6 @@ func write_data(url, data):
 	if url == null:
 		return
 	file.open(url, File.WRITE)
-	print(data)
 	file.store_line(JSON.print(data))
 	file.close()
 	return
