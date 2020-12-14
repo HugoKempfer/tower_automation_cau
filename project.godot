@@ -23,24 +23,36 @@ _global_script_classes=[ {
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Timer",
+"class": "WaveSpawner",
+"language": "GDScript",
+"path": "res://scenes/WaveSpawnerTimer.gd"
 } ]
 _global_script_class_icons={
 "BuildableTile": "",
 "Building": "",
-"GitAPI": ""
+"GitAPI": "",
+"WaveSpawner": ""
 }
 
 [application]
 
 config/name="tower_automation_cau"
 config/description="Collect resources and build"
-run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
+run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-DataParser="*res://scripts/DataParser.gd"
+Settings="*res://scripts/settings.gd"
 InventoryDataParser="*res://scripts/InventoryDataParser.gd"
+DataParser="*res://scripts/DataParser.gd"
+
+[display]
+
+window/size/width=1366
+window/size/height=768
 
 [gdnative]
 
