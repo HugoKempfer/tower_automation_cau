@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/MainMenu/buttons/OptionsButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enceladus.png" type="Texture" id=2]
-[ext_resource path="res://assets/main_menu/title.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/EmotionEngine_106.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/fonts/EmotionEngine_24.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/MainMenu/buttons/ContinueButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/MainMenu/buttons/NewGameButton.tscn" type="PackedScene" id=6]
@@ -29,20 +29,24 @@ __meta__ = {
 }
 
 [node name="CenterRow" type="VBoxContainer" parent="Menu"]
-margin_right = 537.0
+margin_right = 620.0
 margin_bottom = 608.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Logo" type="TextureRect" parent="Menu/CenterRow"]
-margin_right = 537.0
-margin_bottom = 129.0
-texture = ExtResource( 3 )
+[node name="Label" type="Label" parent="Menu/CenterRow"]
+margin_right = 620.0
+margin_bottom = 117.0
+custom_fonts/font = ExtResource( 3 )
+text = "Enceladus 2121"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MenuOptions" type="VBoxContainer" parent="Menu/CenterRow"]
-margin_top = 133.0
-margin_right = 537.0
+margin_top = 121.0
+margin_right = 620.0
 margin_bottom = 547.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -53,24 +57,27 @@ __meta__ = {
 }
 
 [node name="ContinueButton" parent="Menu/CenterRow/MenuOptions" instance=ExtResource( 5 )]
-margin_top = 66.0
-margin_bottom = 120.0
+margin_top = 72.0
+margin_right = 620.0
 
 [node name="NewGameButton" parent="Menu/CenterRow/MenuOptions" instance=ExtResource( 6 )]
-margin_top = 140.0
-margin_bottom = 194.0
+margin_top = 146.0
+margin_right = 620.0
+margin_bottom = 200.0
 
 [node name="OptionsButton" parent="Menu/CenterRow/MenuOptions" instance=ExtResource( 1 )]
-margin_top = 214.0
-margin_bottom = 268.0
+margin_top = 220.0
+margin_right = 620.0
+margin_bottom = 274.0
 
 [node name="QuitGame" parent="Menu/CenterRow/MenuOptions" instance=ExtResource( 9 )]
-margin_top = 288.0
-margin_bottom = 348.0
+margin_top = 294.0
+margin_right = 620.0
+margin_bottom = 354.0
 
 [node name="VersionLabel" type="Label" parent="Menu/CenterRow"]
 margin_top = 551.0
-margin_right = 537.0
+margin_right = 620.0
 margin_bottom = 608.0
 size_flags_vertical = 9
 custom_fonts/font = ExtResource( 4 )
@@ -78,16 +85,16 @@ text = "Version 0.1.0
 CAU Game Dev Groupe 4"
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu"]
-margin_left = 541.0
+margin_left = 624.0
 margin_right = 1126.0
 margin_bottom = 608.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Characters" type="TextureRect" parent="Menu/CenterContainer"]
-margin_left = 117.0
+margin_left = 76.0
 margin_top = 129.0
-margin_right = 467.0
+margin_right = 426.0
 margin_bottom = 479.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
