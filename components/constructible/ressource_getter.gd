@@ -1,6 +1,7 @@
 extends "res://scripts/terrain/building.gd"
 
-onready var inventory = load("res://scripts/PlayerInteface.gd").new()
+onready var player_interface = preload("res://scripts/PlayerInteface.gd")
+onready var inventory = player_interface.new()
 
 func on_positioned() -> void:
 	var timer = Timer.new()

@@ -1,5 +1,5 @@
 extends Node
-var url = "res://Database//inventory.json"
+var url = "res://Database/inventory.json"
 
 func _ready():
 	pass
