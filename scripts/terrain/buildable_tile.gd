@@ -11,9 +11,9 @@ signal buildable_tile_hovered(pos)
 var pos: Vector3
 var coords: Vector3
 
-func pos_init(init_pos: Vector3, coords: Vector3) -> void:
+func pos_init(init_pos: Vector3, _coords: Vector3) -> void:
 	self.transform.origin = init_pos
-	self.coords = coords
+	self.coords = _coords
 
 func _on_StaticBody_mouse_entered():
 	emit_signal("buildable_tile_hovered", self.transform.origin)
