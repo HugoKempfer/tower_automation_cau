@@ -47,5 +47,4 @@ script = ExtResource( 1 )
 
 [node name="PlayerInterface" parent="." instance=ExtResource( 5 )]
 layer = 0
-buildings_names = [ "turret_double", "turret_single", "weapon_blaster" ]
 [connection signal="selected_building" from="PlayerInterface" to="World/Terrain" method="_on_PlayerInterface_selected_building"]

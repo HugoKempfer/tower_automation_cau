@@ -2,15 +2,22 @@ extends CanvasLayer
 
 onready var resource_list: ItemList = $MainContainer/VerticalContainer/Menu/AlignMenu/ResourceList
 onready var building_list: ItemList = $MainContainer/VerticalContainer/Menu/AlignMenu/BuildingList
-export var buildings_names = ["turret_double"]
+export var buildings_names = ["turret_double", "turret_single", "weapon_blaster", "ressource_getter"]
 
 signal selected_building(building_type)
 
 func _ready():
+	var timer = Timer.new()
+
 	init_inventory()
 	initialize_buildings()
+	timer.set_wait_time(1.0)
+	timer.set_one_shot(false)
+	timer.connect("timeout", self, "update_inventory")
+	add_child(timer)
+	timer.start()
 	pass
-
+	
 func init_inventory() -> void:
 	var resources = [InventoryDataParser.get_item_by_name("copper"),
 					InventoryDataParser.get_item_by_name("coal"),
@@ -33,15 +40,13 @@ func update_inventory() -> void:
 					InventoryDataParser.get_item_by_name("lead"),
 					InventoryDataParser.get_item_by_name("oil"),
 					InventoryDataParser.get_item_by_name("uranium")]
-
 	resource_list.clear()
 	for i in range (0, resources.size()):
 		resource_list.add_item(resources[i]["name"] + " : " + String(resources[i]["quantity"]), ResourceLoader.load(resources[i]["icon"]), true)
 
-func edit_player_resource(name, quantity, isAdding) -> void:
+func edit_player_resource(name, quantity, isAdding):
 	InventoryDataParser.edit_item_quantity(name, quantity, isAdding)
-	update_inventory()
-
+	
 func initialize_buildings() -> void:
 	building_list.max_columns = 3
 	building_list.fixed_icon_size = Vector2(48, 48)
@@ -52,5 +57,4 @@ func initialize_buildings() -> void:
 		building_list.add_item(building_name, resource, true)
 
 func _on_BuildingList_item_selected(index):
-	print(index)
 	emit_signal("selected_building", index)

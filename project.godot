@@ -46,14 +46,14 @@ _global_script_class_icons={
 
 config/name="tower_automation_cau"
 config/description="Collect resources and build"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Settings="*res://scripts/settings.gd"
-InventoryDataParser="*res://scripts/InventoryDataParser.gd"
 DataParser="*res://scripts/DataParser.gd"
+InventoryDataParser="*res://scripts/InventoryDataParser.gd"
+Settings="*res://scripts/settings.gd"
 
 [display]
 
