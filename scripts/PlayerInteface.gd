@@ -17,7 +17,7 @@ func _ready():
 	add_child(timer)
 	timer.start()
 	pass
-	
+
 func init_inventory() -> void:
 	var resources = [InventoryDataParser.get_item_by_name("copper"),
 					InventoryDataParser.get_item_by_name("coal"),
@@ -46,7 +46,7 @@ func update_inventory() -> void:
 
 func edit_player_resource(name, quantity, isAdding):
 	InventoryDataParser.edit_item_quantity(name, quantity, isAdding)
-	
+
 func initialize_buildings() -> void:
 	building_list.max_columns = 3
 	building_list.fixed_icon_size = Vector2(48, 48)
