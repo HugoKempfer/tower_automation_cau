@@ -7,7 +7,7 @@ var current_wave := 0
 func _ready():
 	self.start(self.wave_intervals)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	($CounterLabel as Label).text = "Next wave in: %s" % int(self.time_left)
 
 func _on_WaveSpawner_timeout():

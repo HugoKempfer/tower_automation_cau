@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/terrain/building.gd"
 }, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://git_api.gdns"
-}, {
 "base": "Building",
 "class": "Turret",
 "language": "GDScript",
@@ -43,7 +38,6 @@ _global_script_class_icons={
 "BasicEnemySpawner": "",
 "BuildableTile": "",
 "Building": "",
-"GitAPI": "",
 "Turret": "",
 "WaveSpawner": ""
 }
@@ -65,10 +59,11 @@ DataParser="*res://scripts/DataParser.gd"
 
 window/size/width=1366
 window/size/height=768
+window/size/resizable=false
 
 [gdnative]
 
-singletons=[ "res://git_api.gdnlib" ]
+singletons=[  ]
 
 [input]
 
