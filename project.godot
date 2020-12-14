@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Spatial",
+"class": "BasicEnemySpawner",
+"language": "GDScript",
+"path": "res://scripts/units/basic_enemy_spawner.gd"
+}, {
+"base": "Spatial",
 "class": "BuildableTile",
 "language": "GDScript",
 "path": "res://scripts/terrain/buildable_tile.gd"
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://scenes/WaveSpawnerTimer.gd"
 } ]
 _global_script_class_icons={
+"BasicEnemySpawner": "",
 "BuildableTile": "",
 "Building": "",
 "GitAPI": "",
