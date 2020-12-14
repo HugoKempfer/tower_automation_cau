@@ -2,4 +2,4 @@ extends KinematicBody
 
 
 func _ready():
-	pass
+	self.add_to_group("enemy")
