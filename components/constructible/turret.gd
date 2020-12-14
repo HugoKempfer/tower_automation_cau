@@ -19,8 +19,9 @@ func _ready() -> void:
 			printerr("Unexpected error while connecting to method _fire_bullet")
 
 func _process(delta) -> void:
-	self.rotation_degrees.y += rotation_speed * delta
-	aim()
+	if is_positioned:
+		self.rotation_degrees.y += rotation_speed * delta
+		aim()
 
 func aim() -> void:
 	if can_shoot and ray.is_colliding():

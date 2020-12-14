@@ -8,7 +8,7 @@ class TileData:
 
 export var constructible_tile_names = ["Tile"] # Add all non-obstacle tile names
 var constructible_tile_ids = []
-var being_positioned_building: Spatial = null
+var being_positioned_building: Building = null
 onready var tileset_node := $GridMap as GridMap
 var tiles: = {}
 var to_spawn = []
@@ -66,7 +66,7 @@ func handle_tile_hover(pos: Vector3) -> void:
 	if self.being_positioned_building and can_be_positioned_on_tile(self.being_positioned_building.size, pos):
 		self.being_positioned_building.transform.origin = pos
 
-func enable_building_positioning(building: Spatial):
+func enable_building_positioning(building: Building):
 	self.being_positioned_building = building
 	self.enable_building_mode()
 
@@ -82,6 +82,7 @@ func try_positioning_building():
 		self.being_positioned_building.add_to_group("buildings")
 		self.being_positioned_building.on_positioned()
 		self.disable_building_mode()
+		self.being_positioned_building.is_positioned = true
 		self.being_positioned_building = null
 		# TODO => update used tile datas
 
@@ -92,7 +93,7 @@ func _unhandled_input(event):
 		self.spawn_core()
 
 func spawn_buildings(building_type: int) -> void:
-	var new_building: Spatial = building_types[building_type].instance()
+	var new_building: Building = building_types[building_type].instance()
 	$Constructions.add_child(new_building)
 	self.enable_building_positioning(new_building)
 
