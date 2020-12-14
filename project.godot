@@ -49,6 +49,11 @@ Settings="*res://scripts/settings.gd"
 InventoryDataParser="*res://scripts/InventoryDataParser.gd"
 DataParser="*res://scripts/DataParser.gd"
 
+[display]
+
+window/size/width=1366
+window/size/height=768
+
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]

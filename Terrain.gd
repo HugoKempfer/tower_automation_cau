@@ -19,11 +19,6 @@ enum BuildingTypes {
 	WEAPON_BLASTER
 }
 
-var building_selected = {
-	"selected": false,
-	"type": BuildingTypes.TURRET_DOUBLE
- }
-
 const building_types = {
 	BuildingTypes.TURRET_DOUBLE: preload("res://components/constructible/turret_double.tscn"),
 	BuildingTypes.TURRET_SINGLE: preload("res://components/constructible/turret_single.tscn"),
@@ -77,6 +72,7 @@ func enable_building_positioning(building: Spatial):
 func spawn_core():
 	var core := preload("res://components/constructible/Core.tscn")
 	var new_core = core.instance()
+	print(new_core)
 	$Constructions.add_child(new_core)
 	self.enable_building_positioning(new_core)
 
@@ -102,5 +98,3 @@ func spawn_buildings(building_type: int) -> void:
 func _on_PlayerInterface_selected_building(building_type):
 	if being_positioned_building == null:
 		spawn_buildings(building_type)
-		building_selected["selected"] = true
-		building_selected["type"] = building_type
